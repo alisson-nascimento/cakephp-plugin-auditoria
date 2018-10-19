@@ -6,12 +6,12 @@
     "require": {
         "cakephp/cakephp": "^3.6"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^5.7.14|^6.0"
-    },
     "autoload": {
         "psr-4": {
             "Auditoria\\": "src/"
         }
+    },
+    "suggest": {
+         "gonube/cakephp-theme-adminlte": "Caso queira usar a parte de interface web de auditoria"
     }
 }

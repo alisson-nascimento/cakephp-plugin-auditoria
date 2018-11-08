@@ -1,5 +1,5 @@
 {
-    "name": "gonube/cakephp-plugin-auditoria",
+    "name": "alisson-nascimento/cakephp-plugin-auditoria",
     "description": "Auditoria plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",

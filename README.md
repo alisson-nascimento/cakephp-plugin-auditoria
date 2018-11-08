@@ -1,11 +1,38 @@
-# Auditoria plugin for CakePHP
+# CakePHP Plugin de Auditoria
 
-## Installation
+Este plugin faz o papel de coletar as mudanças quando se faz alguma ação de persistencia no banco de dados
 
-You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
+## Instalação
 
-The recommended way to install composer packages is:
+Você pode instalar usando o [composer](http://getcomposer.org).
 
 ```
-composer require Gonube/Auditoria
+composer require alisson-nascimento/cakephp-plugin-auditoria
+```
+### Habilitar Plugin
+
+```
+$ bin/cake plugin load Auditoria
+```
+
+### Configurar Behavior
+
+```php
+// src/Model/Table/ExampleTable.php
+
+class ExampleTable extends Table
+{
+    /**
+     * @param array $config
+     *
+     * @return void
+     */
+    public function initialize(array $config)
+    {
+        parent::initialize($config);
+
+        // Add the behaviour to your table
+        $this->addBehavior('Auditoria.Logger');
+    }
+}
 ```

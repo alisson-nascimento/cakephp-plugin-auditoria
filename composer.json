@@ -12,6 +12,6 @@
         }
     },
     "suggest": {
-         "gonube/cakephp-theme-adminlte": "Caso queira usar a parte de interface web de auditoria"
+         "alisson-nascimento/cakephp-theme-adminlte": "Caso queira usar a parte de interface web de auditoria"
     }
 }

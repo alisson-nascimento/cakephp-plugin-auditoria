@@ -41,17 +41,8 @@ class LoggerBehavior extends Behavior {
             $registroTable = \Cake\ORM\TableRegistry::get('AuditoriaRegistros');
             $logTable = \Cake\ORM\TableRegistry::get('AuditoriaLogs');
             $log = $logTable->newEntity();
-
-            if($entity->isNew()){
-
-                $registro = $registroTable->newEntity();
-
-                $registro->modelo_table = $class;
-                $registro->modelo_pk = $entity->id;
-                $registro->created = date('Y-m-d H:i:s');
-
-                $log->tipo_acao = 'Insert';
-            }else{
+            
+            
                 $data = \Cake\Routing\Router::getRequest()->getData();
                 unset($data['_save']);
                 if(empty($data)){
@@ -66,7 +57,21 @@ class LoggerBehavior extends Behavior {
                 ->where(['modelo_pk'=>$entity->id, 'modelo_table'=>$class]);
 
                 $registro = $query->first();
+            
 
+            if($entity->isNew() || is_null($registro)){
+
+                $registro = $registroTable->newEntity();
+
+                $registro->modelo_table = $class;
+                $registro->modelo_pk = $entity->id;
+                $registro->created = date('Y-m-d H:i:s');
+                
+            }
+            
+            if($entity->isNew()){
+                $log->tipo_acao = 'Insert';
+            }else{
                 $log->dados_antigos = json_encode($diff);
                 $log->tipo_acao = 'Update';
             }
